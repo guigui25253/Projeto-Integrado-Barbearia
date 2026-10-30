@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block corpo %}
+<h2>Cadastro de cliente</h2>
+<form method="post"><label>Nome<input name="nome"></label>
+<label>Telefone (com DDD)<input name="telefone" placeholder="(11) 91234-5678"></label>
+<label>E-mail (opcional)<input name="email" type="email"></label><button>Salvar cliente</button></form>
+<h3>Clientes cadastrados</h3>
+<table><tr><th>Nome</th><th>Telefone</th><th>E-mail</th></tr>
+{% for c in clientes %}<tr><td>{{c.nome}}</td><td>{{c.telefone}}</td><td>{{c.email or '-'}}</td></tr>{% endfor %}</table>
+{% endblock %}

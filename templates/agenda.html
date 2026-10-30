@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block corpo %}
+<h2>Agenda do dia {{data}}</h2>
+<form method="get"><label>Data<input type="date" name="data" value="{{data}}"></label><button>Consultar</button></form>
+<table><tr><th>Hora</th><th>Cliente</th><th>Serviço</th><th>Profissional</th><th>Status</th><th></th></tr>
+{% for l in linhas %}<tr><td>{{l.hora}}</td><td>{{l.cliente}}</td><td>{{l.servico}}</td><td>{{l.profissional}}</td><td>{{l.status}}</td>
+<td>{% if l.status == 'AGENDADO' %}<form method="post" action="/cancelar/{{l.id_agendamento}}"><input type="hidden" name="data" value="{{data}}"><button style="margin:0;background:#b91c1c">Cancelar</button></form>{% endif %}</td></tr>
+{% else %}<tr><td colspan="6">Nenhum agendamento para esta data.</td></tr>{% endfor %}</table>
+{% endblock %}
